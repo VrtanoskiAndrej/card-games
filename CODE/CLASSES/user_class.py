@@ -1,7 +1,6 @@
 class User(object):
-    def __init__(self, name, game):
+    def __init__(self, name):
         self.name = name
-        self.game = game
         self.hand = []
 
     def __str__(self):
