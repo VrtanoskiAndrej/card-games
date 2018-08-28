@@ -1,20 +1,18 @@
-from deck_class import Deck
-from random import randint
-
-
-class Person(object):
-    def __init__(self, name):
+class User(object):
+    def __init__(self, name, game):
         self.name = name
-        self.deck = Deck()
-        print("(Initializing PERSON)")
+        self.game = game
+        self.hand = []
 
-    def show_hand(self, card_amount=4):
-        start_point = randint(1, len(self.deck)-(card_amount+1))
-        print(self.deck[start_point:start_point+card_amount])
+    def __str__(self):
+        return "PERSON | name: {} , game: {}".format(self.name, self.game)
 
-    def get_deck(self):
-        return self.deck
+    def add_hand(self, ext_cards):
+        ''' :parameter ext_cards: MUST BE A LIST '''
+        for cards in ext_cards:
+            self.hand.append(cards)
+
+    def get_hand(self):
+        return self.hand
 
 
-p = Person("JOHN")
-p.deck.show_all_cards()
