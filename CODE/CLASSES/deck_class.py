@@ -3,11 +3,11 @@ from random import shuffle
 
 
 class Deck(object):
-    def __init__(self, is_shuffled=False):
+    def __init__(self, shuffle=False):
         self.cards = []
         self.set_cards()
 
-        if is_shuffled:
+        if shuffle:
             self.shuffle_cards()
 
     def set_cards(self):
@@ -17,13 +17,16 @@ class Deck(object):
                 self.cards.append(c)
 
     def __str__(self):
-        self.show_all_cards()
+        self.show()
 
-    def show_all_cards(self):
+    def show(self):
         for card in self.cards:
             print(card)
 
     def shuffle_cards(self):
         shuffle(self.cards)
+
+    def split_deck(self, *args):
+        pass
 
 
