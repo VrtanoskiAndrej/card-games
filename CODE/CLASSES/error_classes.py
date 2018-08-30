@@ -23,3 +23,9 @@ class TypeClassError(RuntimeError):
     def __init__(self, arg):
         self.error = arg
         self.args = {arg}
+
+
+class InvalidInputError(TypeError):
+    def __init__(self, arg):
+        self.error = arg
+        self.args = {arg}
