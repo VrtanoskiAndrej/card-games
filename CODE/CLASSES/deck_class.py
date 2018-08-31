@@ -11,9 +11,9 @@ SUITS:
 
 
 class Deck(object):
-    def __init__(self, make_shuffle=True, card_skin="default"):
+    def __init__(self, make_shuffle=True):
         self.cards = []
-        self.set_cards(card_skin)
+        self.set_cards()
 
         if make_shuffle:
             self.shuffle_cards()
@@ -21,10 +21,10 @@ class Deck(object):
     def __iter__(self):
         return iter(self.cards)
 
-    def set_cards(self, card_skin):
+    def set_cards(self):
         for suit in ['Hearts', 'Spades', 'Diamonds', 'Clubs']:
-            for value in ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']:
-                c = Card(value, suit, skin=card_skin)
+            for value in ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'D', 'J', 'Q', 'K']:
+                c = Card(value, suit)
                 self.cards.append(c)
 
     def __str__(self):
@@ -42,16 +42,5 @@ class Deck(object):
     def shuffle_cards(self):
         shuffle(self.cards)
 
-# TODO: improve template design and fix create_graphic_deck function + create exceptions for the number 10!!!
 
-    def create_graphic_deck(self):
-        graphical_deck = []
-        for card in self.cards:
-            graphical_deck.append(self.gen_card(card.value, card.suit))
-        return graphical_deck
-
-    @staticmethod
-    def gen_card(value, suit):
-        template = "/------\ \n| {}{}  |\n|      |\n|      |\n|  {}{} |\n\------/".format(value, suit, suit, value)
-        return template
 

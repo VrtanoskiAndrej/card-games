@@ -1,6 +1,7 @@
 from error_classes import TypeClassError
 from deck_class import Deck
 
+
 """ ♥️ ♠️ ♦️ ♣️ """
 
 
@@ -37,6 +38,7 @@ class Solitaire(object):
                 pointer += 1
             print("")
 
+    # TODO: FINISH CODE
     def move_card(self, from_, to, card):
         if from_ and to in ['stock', 'tableau', 'foundation', 'waste']:
             try:
@@ -61,5 +63,4 @@ class Solitaire(object):
             total += len(self.foundation[key])   # CARDS in the foundation
 
         return total
-
 
