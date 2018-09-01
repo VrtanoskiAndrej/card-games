@@ -1,0 +1,19 @@
+{
+    "stock": [],
+    "tableau": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ],
+    "foundation": {
+        "Hearts": [],
+        "Spades": [],
+        "Diamonds": [],
+        "Clubs": []
+    },
+    "waste": []
+}

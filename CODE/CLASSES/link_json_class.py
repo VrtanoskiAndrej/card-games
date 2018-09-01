@@ -1,10 +1,21 @@
 import json
+from parse import JParser
+""" https://github.com/EmilStenstrom/json-traverse/ --- Special Thanks"""
 
 
 class Link(object):
+
     def __init__(self, json_file):
         self.json_file = json_file
-        self.data = json.load(open(json_file))
+        try:
+            self.data = json.load(open(json_file))
+        except FileNotFoundError:
+            open(json_file, "w")
+        self.setup_jparce()
+
+    def setup_jparce(self):
+        jparce = JParser(self.json_file)
+        return
 
     def load_template(self):
         template = {"stock": [], "tableau": [[], [], [], [], [], [], []],
@@ -15,28 +26,7 @@ class Link(object):
         f.close()
 
     def insert_to_file(self, where, info):
-        with open(self.json_file, "r+") as jsonFile:
-            data = json.load(jsonFile)
-            assert isinstance(data, object)
-            data[where].append(info)
-            jsonFile.seek(0)  # rewind
-            json.dump(data, jsonFile, indent=4)
-            jsonFile.truncate()
-
-    @staticmethod
-    def recursive_iter(obj):
-        if isinstance(obj, dict):
-            for thing in obj.values():
-                yield from Link.recursive_iter(thing)
-        elif any(isinstance(obj, t) for t in (list, tuple)):
-            for thing in obj:
-                yield from Link.recursive_iter(thing)
-        else:
-            yield obj
-
-    def iter_through(self):
-        for item in Link.recursive_iter(self.data):
-            print(item)
+        jparce
 
     def __str__(self):
         return "{}".format(self.data)

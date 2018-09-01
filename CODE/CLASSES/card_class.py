@@ -1,6 +1,3 @@
-from error_classes import InvalidInputError
-
-
 class Card(object):
 
     """

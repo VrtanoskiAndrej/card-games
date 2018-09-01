@@ -1,5 +1,6 @@
-from error_classes import TypeClassError
 from deck_class import Deck
+from user_class import User
+from link_json_class import Link
 
 
 """ ♥️ ♠️ ♦️ ♣️ """
@@ -13,12 +14,12 @@ class Solitaire(object):
         :param user:
         :param deck:
         """
-        if user.__class__.__name__ == "User" and deck.__class__.__name__ == "Deck":
+        if isinstance(user, User) and isinstance(deck, Deck):
             self.user = user
             self.deck = list(deck)
 
         else:
-            raise TypeClassError("CLASS names do not match!, use the User or Deck class")
+            raise TypeError("CLASS names do not match!, use the User or Deck class")
 
         self.stock = []
         self.tableau = [[], [], [], [], [], [], []]
@@ -37,14 +38,6 @@ class Solitaire(object):
                 self.tableau[i].append(self.deck[pointer])
                 pointer += 1
             print("")
-
-    # TODO: FINISH CODE
-    def move_card(self, from_, to, card):
-        if from_ and to in ['stock', 'tableau', 'foundation', 'waste']:
-            try:
-                pass
-            except TypeError:
-                pass
 
     def split_deck(self, *args):
         new_cards, total = [], 0

@@ -18,7 +18,7 @@ class User(object):
         the function will add additional cards to the users 'hand'
         :parameter ext_cards:
         '''
-        if ext_cards.__class__.__name__ == "list":
+        if isinstance(ext_cards, list):
             for cards in ext_cards:
                 self.hand.append(cards)
         else:
