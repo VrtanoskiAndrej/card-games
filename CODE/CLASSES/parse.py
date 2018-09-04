@@ -52,9 +52,8 @@ class JParser(object):
             jsonFile.truncate()
 
     def insert(self, path, info):
-        if not isinstance(path, PythonString) or not isinstance(info, PythonString):
-            raise TypeError("the 'path' and 'info' arguments must both be {},"
-                            " not '{}' and '{}' ".format(PythonString, type(path), type(info)))
+        if not isinstance(path, PythonString):
+            raise TypeError("the 'path' arguments must be {}, not '{}'".format(PythonString, type(path)))
         path_list = []
 
         for item in path.split("."):
@@ -85,3 +84,41 @@ class JParser(object):
     def iter_through(self):
         for item in self.__recursive_iter(self.data):
             print(item)
+
+    def count(self):
+        item_list = []
+        for item in self.__recursive_iter(self.data):
+            item_list.append(item)
+        return len(item_list)
+
+    def __str__(self):
+        return "{}".format(self.data)
+
+    def swap(self, path_a, path_b):
+        if not isinstance(path_a, PythonString) or not isinstance(path_b, PythonString):
+            raise TypeError("the 'path' arguments must both be {}, not '{}'".format(PythonString, type(path)))
+        path_list_a = []
+        path_list_b = []
+
+        for item in path_a.split("."):
+            if self.is_valid_index(item):
+                path_list_a.append('[{}]'.format(item))
+            else:
+                path_list_a.append('["{}"]'.format(item))
+
+        for item in path_b.split("."):
+            if self.is_valid_index(item):
+                path_list_b.append('[{}]'.format(item))
+            else:
+                path_list_b.append('["{}"]'.format(item))
+
+        try:
+            traverse = "self.data{}, self.data{} = self.data{}, self.data{}".format(
+                "".join(str(x) for x in path_list_a), "".join(str(x) for x in path_list_b),
+                "".join(str(x) for x in path_list_b), "".join(str(x) for x in path_list_a))
+            exec(traverse)
+        except IndexError:
+            raise IndexError("".join(str(x) for x in path_list_a), "".join(str(x) for x in path_list_b))
+        except KeyError:
+            raise IndexError("".join(str(x) for x in path_list_a), "".join(str(x) for x in path_list_b))
+        self._update()

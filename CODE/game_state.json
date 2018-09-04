@@ -1,13 +1,73 @@
 {
-    "stock": [],
+    "stock": [
+        "(3, Diamonds)",
+        "(4, Diamonds)",
+        "(5, Diamonds)",
+        "(6, Diamonds)",
+        "(7, Diamonds)",
+        "(8, Diamonds)",
+        "(9, Diamonds)",
+        "(D, Diamonds)",
+        "(J, Diamonds)",
+        "(Q, Diamonds)",
+        "(K, Diamonds)",
+        "(A, Clubs)",
+        "(2, Clubs)",
+        "(3, Clubs)",
+        "(4, Clubs)",
+        "(5, Clubs)",
+        "(6, Clubs)",
+        "(7, Clubs)",
+        "(8, Clubs)",
+        "(9, Clubs)",
+        "(D, Clubs)",
+        "(J, Clubs)",
+        "(Q, Clubs)",
+        "(K, Clubs)"
+    ],
     "tableau": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        [
+            "(A, Hearts)"
+        ],
+        [
+            "(2, Hearts)",
+            "(8, Hearts)"
+        ],
+        [
+            "(3, Hearts)",
+            "(9, Hearts)",
+            "(A, Spades)"
+        ],
+        [
+            "(4, Hearts)",
+            "(D, Hearts)",
+            "(2, Spades)",
+            "(6, Spades)"
+        ],
+        [
+            "(5, Hearts)",
+            "(J, Hearts)",
+            "(3, Spades)",
+            "(7, Spades)",
+            "(D, Spades)"
+        ],
+        [
+            "(6, Hearts)",
+            "(Q, Hearts)",
+            "(4, Spades)",
+            "(8, Spades)",
+            "(J, Spades)",
+            "(K, Spades)"
+        ],
+        [
+            "(7, Hearts)",
+            "(K, Hearts)",
+            "(5, Spades)",
+            "(9, Spades)",
+            "(Q, Spades)",
+            "(A, Diamonds)",
+            "(2, Diamonds)"
+        ]
     ],
     "foundation": {
         "Hearts": [],
