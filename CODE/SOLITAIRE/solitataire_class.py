@@ -18,7 +18,6 @@ class Solitaire(object):
         if isinstance(user, User) and isinstance(deck, Deck):
             self.user = user
             self.deck = list(deck)
-            print(self.deck)
 
         else:
             raise TypeError("CLASS names do not match!, use the User or Deck class")

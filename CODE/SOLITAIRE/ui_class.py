@@ -1,63 +1,27 @@
-import tkinter
+from solitataire_class import Solitaire
+
 
 class UI(object):
     def __init__(self, game):
+        assert isinstance(game, Solitaire)
         self.game = game
-
-
 
     # TODO: improve template design and fix create_graphic_deck function + create exceptions for the number 10!!!
 
-    def create_graphic_deck(self):
-        graphical_deck = []
-        for card in self.cards:
-            graphical_deck.append(self.gen_card(card.value, card.suit))
-            print(self.gen_card(card.value, card.suit))
-        return graphical_deck
+    def show_board(self, card_width=20):
+        for i in range(0, 7):
+            print(" " * card_width * i, end="")
+            for j in range(i, 7):
+                print(self.pad(20, self.game.tableau[j][i]), end="")
+            print("")
 
-    def gen_card(self, value, suit):
-        spades_template = """
-    .------.      
-    |{}.--. |
-    |  /\  |
-    | (__) |
-    | '--'{}| 
-    `------' """
-        hearts_template = """
-    .------.
-    |{}.--. |
-    | (\/) |
-    |  \/  |
-    | '--'{}|
-    `------'"""
-        clubs_template = """
+    def pad(self, length, text):
+        new_text = ""
+        extra = length - len(text)
 
-    .------.
-    |{}.--. |
-    |  ()  |
-    | ()() |
-    | '--'{}|
-    `------'"""
-        diamonds_template = """
-    .------.
-    |{}.--. |
-    |  /\  |
-    |  \/  |
-    | '--'{}|
-    `------'"""
-
-        if suit == "Spades":
-            return spades_template.format(value, value)
-
-        elif suit == "Hearts":
-            return hearts_template.format(value, value)
-
-        elif suit == "Clubs":
-            return clubs_template.format(value, value)
-
-        elif suit == "Diamonds":
-            return diamonds_template.format(value, value)
-
+        if extra % 2 == 0:
+            return "{}{}{}".format(int(extra / 2) * " ", text, int(extra / 2) * " ")
         else:
-            return "ERROR"
+            return "{}{}{}".format((extra // 2 + 1) * " ", text, (extra // 2) * " ")
+
 

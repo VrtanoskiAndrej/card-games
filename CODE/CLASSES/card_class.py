@@ -17,3 +17,6 @@ class Card(object):
     def __repr__(self):
         return "({}, {})".format(self.value, self.suit)
 
+    def __len__(self):
+        return len("({}, {})".format(self.value, self.suit))
+
